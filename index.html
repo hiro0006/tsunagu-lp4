@@ -243,7 +243,7 @@
             scroll-snap-align: start; /* セクションの開始位置でスナップ */
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* Changed from center to flex-start */
             align-items: center;
             padding: 1rem; /* 各セクションのパディング */
             box-sizing: border-box; /* パディングを幅に含める */
@@ -839,7 +839,7 @@
         let currentSectionIndex = 0;
         let autoSwipeInterval;
         let userInteractionTimeout;
-        const AUTO_SWIPE_DELAY = 10000; // 10 seconds (changed from 30 seconds)
+        const AUTO_SWIPE_DELAY = 10000; // 10 seconds
         const USER_IDLE_DELAY = 5000; // 5 seconds of idle time before resuming auto-swipe
 
         // Function to update the state of navigation buttons (enabled/disabled)
