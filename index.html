@@ -18,12 +18,14 @@
         }
         /* ヒーローセクションとメインCTAセクションの背景グラデーションをより艶やかで爽やかに */
         .gradient-bg {
-            /* 背景色を紺色のグラデーションに変更 */
-            background: linear-gradient(135deg, #191970 0%, #000080 100%); /* ミッドナイトブルーからネイビーへ */
+            /* 背景画像を設定 */
+            background-image: url('https://github.com/hiro0006/tsu-logo/blob/main/%E8%A6%8B%E5%87%BA%E3%81%97%E3%82%92%E8%BF%BD%E5%8A%A0%20(1).jpg?raw=true'); /* 新しい画像URLに更新 */
+            background-size: cover;
+            background-position: center;
             position: relative;
             overflow: hidden;
         }
-        /* 背景に動きのあるパターンを追加 */
+        /* 背景に動きのあるパターンとグラデーションを追加 */
         .gradient-bg::before {
             content: '';
             position: absolute;
@@ -31,13 +33,29 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><circle cx="25" cy="25" r="15" fill="%23fff"/><circle cx="75" cy="75" r="15" fill="%23fff"/></svg>') repeat;
-            background-size: 200px;
+            /* 既存のグラデーションとパターンを維持 */
+            background: linear-gradient(135deg, rgba(25, 25, 112, 0.8) 0%, rgba(0, 0, 128, 0.8) 100%), /* グラデーションの透明度を調整 */
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><circle cx="25" cy="25" r="15" fill="%23fff"/><circle cx="75" cy="75" r="15" fill="%23fff"/></svg>') repeat;
+            background-size: cover, 200px; /* グラデーションとパターンのサイズ */
             animation: moveBackground 30s linear infinite;
+            z-index: 0; /* コンテンツの下に配置 */
         }
+        /* 背景画像をぼかすための擬似要素 */
+        .gradient-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3); /* 半透明の暗いオーバーレイ */
+            filter: blur(5px); /* ぼかし効果 */
+            z-index: -1; /* 最背面に配置 */
+        }
+
         @keyframes moveBackground {
-            from { background-position: 0 0; }
-            to { background-position: 200px 200px; }
+            from { background-position: 0 0, 0 0; } /* 複数の背景に対応 */
+            to { background-position: 0 0, 200px 200px; }
         }
 
         .card-hover {
@@ -317,6 +335,32 @@
         }
 
         .tsunagu-value-bg > * {
+            position: relative;
+            z-index: 1; /* Content in front of the overlay */
+        }
+
+        /* CTA Section background with blur */
+        .cta-section-bg {
+            background-image: url('https://github.com/hiro0006/tsu-logo/blob/main/%E5%90%8D%E7%A7%B0%E6%9C%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%20(6).jpg?raw=true');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay for readability */
+            filter: blur(3px); /* Blur effect */
+            z-index: 0; /* As background */
+        }
+
+        .cta-section-bg > * {
             position: relative;
             z-index: 1; /* Content in front of the overlay */
         }
@@ -738,7 +782,7 @@
         </section>
 
         <!-- CTA Section -->
-        <section class="swipe-section bg-gradient-to-r from-blue-400 to-purple-400 text-white py-20 content-top-aligned"> <!-- 上揃えとパディングを増やす -->
+        <section class="swipe-section cta-section-bg text-white py-20 content-top-aligned"> <!-- 新しい背景クラスを追加 -->
             <div class="container mx-auto px-4 max-w-3xl">
                 <div class="text-center">
                     <h2 class="text-yellow-300 text-5xl md:text-6xl font-bold mb-6 font-montserrat cta-text-impact-animation"> <!-- 色、大きさ、フォント、アニメーションを追加 -->
@@ -909,7 +953,7 @@
         let currentSectionIndex = 0;
         let autoSwipeInterval;
         let userInteractionTimeout;
-        const AUTO_SWIPE_DELAY = 5000; // 5 seconds (changed from 10000)
+        const AUTO_SWIPE_DELAY = 3000; // 3 seconds (changed from 5000)
         const USER_IDLE_DELAY = 5000; // 5 seconds of idle time before resuming auto-swipe
 
         // Function to update the state of navigation buttons (enabled/disabled)
