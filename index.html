@@ -10,16 +10,16 @@
     <style>
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            overflow-x: hidden; /* 全体の横スクロールを防ぐ */
+            overflow-x: hidden; /* Prevent horizontal scrolling of the entire body */
         }
-        /* ヒーローセクションとメインCTAセクションの背景グラデーションをより艶やかで爽やかに */
+        /* Background gradient for Hero and main CTA sections, brighter and fresher */
         .gradient-bg {
-            /* 背景色を紺色のグラデーションに変更 */
-            background: linear-gradient(135deg, #191970 0%, #000080 100%); /* ミッドナイトブルーからネイビーへ */
+            /* Changed background to a navy gradient */
+            background: linear-gradient(135deg, #191970 0%, #000080 100%); /* Midnight blue to navy */
             position: relative;
             overflow: hidden;
         }
-        /* 背景に動きのあるパターンを追加 */
+        /* Add moving pattern to background */
         .gradient-bg::before {
             content: '';
             position: absolute;
@@ -38,11 +38,11 @@
 
         .card-hover {
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* より繊細なシャドウ */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* More subtle shadow */
         }
         .card-hover:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* ホバー時のシャドウを強化 */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Stronger shadow on hover */
         }
         .pulse-animation {
             animation: pulse 2s infinite;
@@ -63,14 +63,14 @@
             to { width: 100% }
         }
 
-        /* 各セクションの背景色を微調整し、より明るくクリーンな印象に */
+        /* Adjust background colors of each section for a brighter, cleaner look */
         .bg-gray-50 {
-            background-color: #F8F9FA; /* ほぼ白に近いライトグレー */
+            background-color: #F8F9FA; /* Light gray, almost white */
         }
         .bg-white {
-            background-color: #FFFFFF; /* 純粋な白 */
+            background-color: #FFFFFF; /* Pure white */
         }
-        /* カードのボーダー色を少し明るく */
+        /* Slightly brighter card border colors */
         .border-red-400 { border-color: #EF4444; }
         .border-orange-400 { border-color: #F97316; }
         .border-yellow-400 { border-color: #F59E0B; }
@@ -78,68 +78,68 @@
         .border-purple-400 { border-color: #A78BFA; }
         .border-green-400 { border-color: #34D399; }
 
-        /* アイコンの色を統一感のあるトーンに調整 */
+        /* Adjust icon colors to a consistent tone */
         .text-red-500 { color: #EF4444; }
         .text-orange-500 { color: #F97316; }
         .text-yellow-500 { color: #F59E0B; }
-        .text-blue-500 { color: #3B82F6; } /* より鮮やかな青 */
-        .text-purple-500 { color: #8B5CF6; } /* より鮮やかな紫 */
-        .text-green-500 { color: #10B981; } /* より鮮やかな緑 */
-        .text-indigo-600 { color: #4F46E5; } /* 濃いめのインディゴ */
-        .text-yellow-300 { color: #FCD34D; } /* ヒーローセクションの強調色 */
+        .text-blue-500 { color: #3B82F6; } /* More vibrant blue */
+        .text-purple-500 { color: #8B5CF6; } /* More vibrant purple */
+        .text-green-500 { color: #10B981; } /* More vibrant green */
+        .text-indigo-600 { color: #4F46E5; } /* Darker indigo */
+        .text-yellow-300 { color: #FCD34D; } /* Accent color for hero section */
 
-        /* ボタンのスタイル調整 */
+        /* Button style adjustments */
         .bg-indigo-600 { background-color: #4F46E5; }
         .hover\:bg-indigo-700:hover { background-color: #4338CA; }
         .bg-yellow-400 { background-color: #FCD34D; }
-        .hover\:bg-yellow-300:hover { background-color: #FCD34D; } /* ホバー時も同じ色で、シャドウで変化を強調 */
+        .hover\:bg-yellow-300:hover { background-color: #FCD34D; } /* Same color on hover, emphasize with shadow */
         .border-white { border-color: #FFFFFF; }
         .hover\:bg-white:hover { background-color: #FFFFFF; }
         .hover\:text-gray-900:hover { color: #1F2937; }
 
-        /* CTAセクションの背景グラデーションを調整 */
+        /* Adjust CTA section background gradient */
         .bg-gradient-to-r.from-blue-400.to-purple-400 {
-            background: linear-gradient(to right, #60A5FA 0%, #A78BFA 100%); /* より柔らかい青から紫へ */
+            background: linear-gradient(to right, #60A5FA 0%, #A78BFA 100%); /* Softer blue to purple */
         }
 
-        /* 社長ロゴのスタイル */
+        /* Company logo style */
         .company-logo {
             position: absolute;
-            top: 50%; /* 中央に配置 */
-            right: 5%; /* 右からの位置 */
-            transform: translateY(-50%); /* 垂直方向の中央揃え */
-            width: 300px; /* ロゴの幅を調整 */
+            top: 50%; /* Centered vertically */
+            right: 5%; /* Position from right */
+            transform: translateY(-50%); /* Vertical centering */
+            width: 300px; /* Adjust logo width */
             height: auto;
-            z-index: 20; /* ヒーローコンテンツよりも前面に表示 */
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)); /* ロゴに影を追加 */
-            opacity: 0.8; /* ロゴの透明度を調整 */
+            z-index: 20; /* Display in front of hero content */
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)); /* Add shadow to logo */
+            opacity: 0.8; /* Adjust logo transparency */
         }
 
-        /* レスポンシブ調整 */
-        @media (max-width: 1024px) { /* デスクトップとタブレットの中間 */
+        /* Responsive adjustments */
+        @media (max-width: 1024px) { /* Mid-point between desktop and tablet */
             .company-logo {
                 width: 250px;
                 right: 3%;
             }
         }
-        @media (max-width: 768px) { /* タブレットとモバイルの中間 */
+        @media (max-width: 768px) { /* Mid-point between tablet and mobile */
             .company-logo {
-                width: 180px; /* モバイルでのロゴサイズを調整 */
-                top: 2rem; /* 上部に移動 */
+                width: 180px; /* Adjust logo size for mobile */
+                top: 2rem; /* Move to top */
                 right: 1rem;
-                transform: translateY(0); /* 垂直方向の中央揃えを解除 */
+                transform: translateY(0); /* Remove vertical centering */
             }
             .hero-content-wrapper {
-                padding-top: 6rem; /* ロゴとの重なりを避けるため、上部にパディングを追加 */
+                padding-top: 6rem; /* Add padding to top to avoid overlap with logo */
             }
             .hero-section h1 {
-                font-size: 3.5rem; /* モバイルでのH1フォントサイズ調整 */
+                font-size: 3.5rem; /* Adjust H1 font size for mobile */
             }
             .hero-section p {
-                font-size: 1.25rem; /* モバイルでのPフォントサイズ調整 */
+                font-size: 1.25rem; /* Adjust P font size for mobile */
             }
         }
-        @media (max-width: 640px) { /* スマホ向け */
+        @media (max-width: 640px) { /* For smartphones */
             .company-logo {
                 width: 120px;
                 top: 1rem;
@@ -156,13 +156,13 @@
             }
         }
 
-        /* 運送会社A社の背景画像スタイル */
+        /* Background image styles for Transport Company A */
         .case-study-a-bg {
             background-image: url('https://github.com/hiro0006/tsu-logo/blob/main/%E5%90%8D%E7%A7%B0%E6%9C%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%20(1).jpg?raw=true');
             background-size: cover;
             background-position: center;
             position: relative;
-            overflow: hidden; /* ぼかしがはみ出さないように */
+            overflow: hidden; /* Prevent blur from overflowing */
         }
 
         .case-study-a-bg::before {
@@ -172,18 +172,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.7); /* 半透明の白いオーバーレイ */
-            filter: blur(3px); /* ぼかし効果 */
-            z-index: 0; /* 背景として */
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white overlay */
+            filter: blur(3px); /* Blur effect */
+            z-index: 0; /* As background */
         }
 
-        /* 運送会社B社の背景画像スタイル */
+        /* Background image styles for Transport Company B */
         .case-study-b-bg {
             background-image: url('https://github.com/hiro0006/tsu-logo/blob/main/%E5%90%8D%E7%A7%B0%E6%9C%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%20(2).jpg?raw=true');
             background-size: cover;
             background-position: center;
             position: relative;
-            overflow: hidden; /* ぼかしがはみ出さないように */
+            overflow: hidden; /* Prevent blur from overflowing */
         }
 
         .case-study-b-bg::before {
@@ -193,18 +193,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.7); /* 半透明の白いオーバーレイ */
-            filter: blur(3px); /* ぼかし効果 */
-            z-index: 0; /* 背景として */
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white overlay */
+            filter: blur(3px); /* Blur effect */
+            z-index: 0; /* As background */
         }
 
-        /* カット野菜メーカーC社の背景画像スタイル */
+        /* Background image styles for Cut Vegetable Manufacturer C */
         .case-study-c-bg {
             background-image: url('https://github.com/hiro0006/tsu-logo/blob/main/%E5%90%8D%E7%A7%B0%E6%9C%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%20(3).jpg?raw=true');
             background-size: cover;
             background-position: center;
             position: relative;
-            overflow: hidden; /* ぼかしがはみ出さないように */
+            overflow: hidden; /* Prevent blur from overflowing */
         }
 
         .case-study-c-bg::before {
@@ -214,44 +214,49 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.7); /* 半透明の白いオーバーレイ */
-            filter: blur(3px); /* ぼかし効果 */
-            z-index: 0; /* 背景として */
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white overlay */
+            filter: blur(3px); /* Blur effect */
+            z-index: 0; /* As background */
         }
 
         .case-study-a-bg > *, .case-study-b-bg > *, .case-study-c-bg > * {
             position: relative;
-            z-index: 1; /* コンテンツを前面に */
+            z-index: 1; /* Content in front */
         }
 
-        /* スワイプコンテナのスタイル */
+        /* Swipe container style */
         .swipe-container {
-            display: flex; /* セクションを横に並べる */
-            overflow-x: scroll; /* 横スクロールを許可 */
-            scroll-snap-type: x mandatory; /* スクロールスナップを有効化 */
-            -webkit-overflow-scrolling: touch; /* iOSでのスムーズなスクロール */
-            scroll-behavior: smooth; /* プログラムによるスクロールをスムーズに */
-            height: calc(100vh - 64px); /* ヘッダーの高さを引いたビューポートの高さ */
+            display: flex; /* Arrange sections horizontally */
+            overflow-x: scroll; /* Allow horizontal scrolling */
+            scroll-snap-type: x mandatory; /* Enable scroll snap */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            scroll-behavior: smooth; /* Smooth programmatic scrolling */
+            height: calc(100vh - 64px); /* Viewport height minus header height */
             position: relative;
-            z-index: 10; /* ヘッダーの下に配置 */
+            z-index: 10; /* Position below header */
         }
 
-        /* 各セクションのスタイル */
+        /* Each section style - Default to center alignment */
         .swipe-section {
-            flex-shrink: 0; /* セクションが縮まないようにする */
-            width: 100vw; /* ビューポートの幅いっぱいに表示 */
-            scroll-snap-align: start; /* セクションの開始位置でスナップ */
+            flex-shrink: 0; /* Prevent sections from shrinking */
+            width: 100vw; /* Display full viewport width */
+            scroll-snap-align: start; /* Snap to the start of the section */
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Changed from center to flex-start */
+            justify-content: center; /* Default: Center content vertically */
             align-items: center;
-            padding: 1rem; /* 各セクションのパディング */
-            box-sizing: border-box; /* パディングを幅に含める */
+            padding: 1rem; /* Padding for each section */
+            box-sizing: border-box; /* Include padding in width */
             position: relative;
-            overflow-y: auto; /* セクション内のコンテンツが長い場合は縦スクロールを許可 */
+            overflow-y: auto; /* Allow vertical scrolling if content is long */
         }
 
-        /* デスクトップでは横スクロールバーを非表示にするが、機能は維持 */
+        /* Specific style for sections that need content aligned to the top */
+        .swipe-section.content-top-aligned {
+            justify-content: flex-start; /* Align content to the top */
+        }
+
+        /* Hide horizontal scrollbar on desktop, but keep functionality */
         @media (min-width: 768px) {
             .swipe-container::-webkit-scrollbar {
                 display: none;
@@ -262,9 +267,9 @@
             }
         }
 
-        /* ナビゲーションボタンのスタイル */
+        /* Navigation button style */
         .nav-button {
-            position: fixed; /* Changed from absolute to fixed */
+            position: fixed; /* Fixed position */
             top: 50%;
             transform: translateY(-50%);
             background-color: rgba(0, 0, 0, 0.5);
@@ -272,10 +277,10 @@
             border: none;
             padding: 1rem;
             cursor: pointer;
-            z-index: 30; /* コンテンツより前面に */
+            z-index: 30; /* In front of content */
             opacity: 0.7;
             transition: opacity 0.3s ease;
-            display: none; /* デフォルトで非表示 */
+            display: none; /* Hidden by default */
         }
         .nav-button:hover {
             opacity: 1;
@@ -293,7 +298,7 @@
             cursor: not-allowed;
         }
 
-        /* デスクトップでボタンを表示 */
+        /* Display buttons on desktop */
         @media (min-width: 768px) {
             .nav-button {
                 display: block;
@@ -323,36 +328,34 @@
     <!-- Swipeable Container for Main Content -->
     <div class="swipe-container" id="swipeContainer">
         <!-- Hero Section -->
-        <section class="swipe-section gradient-bg text-white">
-            <!-- 社長ロゴの挿入 -->
+        <section class="swipe-section gradient-bg text-white py-16">
+            <!-- Company logo insertion -->
             <img src="https://raw.githubusercontent.com/hiro0006/tsu-logo/0f9304bb52705376d8fcd8cbaaf461582b7ce655/IMG_9677.png" alt="TSUNAGUロゴ" class="company-logo">
 
-            <div class="container mx-auto px-4 relative z-10 hero-content-wrapper text-center">
-                <div class="max-w-4xl mx-auto">
-                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                        社長の「こうしたい」を<br>
-                        確かな情報と数字で<br>
-                        <span class="text-yellow-300">「現実」</span>にする
-                    </h1>
-                    <p class="text-xl md:text-2xl mb-8 opacity-90">
-                        物足りないNo.2に悩む社長へ。あなたのビジョンを加速させる、<br>
-                        頼れる「情報参謀」がここにいます
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-full text-lg font-semibold hover:bg-yellow-300 transition duration-300 pulse-animation shadow-xl">
-                            <i class="fas fa-calendar-alt mr-2"></i>今すぐ無料相談を予約
-                        </button>
-                        <button class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition duration-300 shadow-md">
-                            <i class="fas fa-play mr-2"></i>サービス詳細を見る
-                        </button>
-                    </div>
+            <div class="container mx-auto px-4 relative z-10 hero-content-wrapper text-left max-w-4xl">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                    社長の「こうしたい」を<br>
+                    確かな情報と数字で<br>
+                    <span class="text-yellow-300">「現実」</span>にする
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">
+                    物足りないNo.2に悩む社長へ。あなたのビジョンを加速させる、<br>
+                    頼れる「情報参謀」がここにいます
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-start">
+                    <button class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-full text-lg font-semibold hover:bg-yellow-300 transition duration-300 pulse-animation shadow-xl">
+                        <i class="fas fa-calendar-alt mr-2"></i>今すぐ無料相談を予約
+                    </button>
+                    <button class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition duration-300 shadow-md">
+                        <i class="fas fa-play mr-2"></i>サービス詳細を見る
+                    </button>
                 </div>
             </div>
         </section>
 
         <!-- Problem Section -->
-        <section class="swipe-section bg-white">
-            <div class="container mx-auto px-4">
+        <section class="swipe-section bg-white py-16 content-top-aligned"> <!-- Added content-top-aligned -->
+            <div class="container mx-auto px-4 max-w-6xl">
                 <div class="text-center mb-12">
                     <h2 class="text-4xl font-bold text-gray-800 mb-4">
                         こんな状況に<span class="text-red-500">心当たり</span>ありませんか？
@@ -360,7 +363,7 @@
                     <p class="text-xl text-gray-600">行動力ある社長が直面する、No.2と情報の課題</p>
                 </div>
                 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-400 card-hover">
                         <i class="fas fa-exclamation-triangle text-red-500 text-3xl mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-3">No.2からの情報が物足りない</h3>
@@ -401,9 +404,9 @@
         </section>
 
         <!-- New Section for TSUNAGU Value -->
-        <section class="swipe-section bg-white">
-            <div class="container mx-auto px-4">
-                <div class="grid md:grid-cols-1 gap-8 items-center max-w-6xl mx-auto text-center">
+        <section class="swipe-section bg-white py-16">
+            <div class="container mx-auto px-4 max-w-6xl">
+                <div class="grid md:grid-cols-1 gap-8 items-center text-center">
                     <div class="text-center">
                         <h2 class="text-4xl font-bold text-gray-800 mb-4">
                             TSUNAGUの<span class="text-indigo-600">価値</span>
@@ -422,8 +425,8 @@
         </section>
 
         <!-- Solution Section -->
-        <section class="swipe-section bg-gray-100">
-            <div class="container mx-auto px-4">
+        <section class="swipe-section bg-gray-100 py-16">
+            <div class="container mx-auto px-4 max-w-6xl">
                 <div class="text-center mb-12">
                     <h2 class="text-4xl font-bold text-gray-800 mb-4">
                         TSUNAGUが提供する<br>
@@ -472,8 +475,8 @@
         </section>
 
         <!-- Features Section -->
-        <section class="swipe-section bg-white">
-            <div class="container mx-auto px-4">
+        <section class="swipe-section bg-white py-16 content-top-aligned"> <!-- Added content-top-aligned -->
+            <div class="container mx-auto px-4 max-w-6xl">
                 <div class="text-center mb-12">
                     <h2 class="text-4xl font-bold text-gray-800 mb-4">
                         なぜTSUNAGUが選ばれるのか？
@@ -481,7 +484,7 @@
                     <p class="text-xl text-gray-600">社長の「こうしたい」を理解し、実現を支える専門的サポート</p>
                 </div>
                 
-                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8">
                     <div class="text-center p-8 bg-blue-50 rounded-2xl card-hover">
                         <div class="bg-blue-500 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                             <i class="fas fa-handshake text-white text-3xl"></i>
@@ -519,8 +522,8 @@
         </section>
 
         <!-- Case Studies Section -->
-        <section class="swipe-section bg-gray-100">
-            <div class="container mx-auto px-4">
+        <section class="swipe-section bg-gray-100 py-16 content-top-aligned"> <!-- Added content-top-aligned -->
+            <div class="container mx-auto px-4 max-w-6xl">
                 <div class="text-center mb-12">
                     <h2 class="text-4xl font-bold text-gray-800 mb-4">
                         成功事例
@@ -528,7 +531,7 @@
                     <p class="text-xl text-gray-600">情報の掛け算思考で実現した劇的な成果</p>
                 </div>
                 
-                <div class="space-y-8 max-w-5xl mx-auto">
+                <div class="space-y-8">
                     <!-- Case Study 1 -->
                     <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover case-study-a-bg">
                         <div class="p-8">
@@ -623,8 +626,8 @@
         </section>
 
         <!-- Social Issues Section -->
-        <section class="swipe-section bg-indigo-900 text-white">
-            <div class="container mx-auto px-4">
+        <section class="swipe-section bg-indigo-900 text-white py-16 content-top-aligned"> <!-- Added content-top-aligned -->
+            <div class="container mx-auto px-4 max-w-6xl">
                 <div class="text-center mb-12">
                     <h2 class="text-4xl font-bold mb-4">
                         今、企業が直面する<br>
@@ -633,7 +636,7 @@
                     <p class="text-xl opacity-90">これらの問題に、一人で立ち向かっていませんか？</p>
                 </div>
                 
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="bg-white bg-opacity-10 p-6 rounded-lg text-center">
                         <i class="fas fa-users text-yellow-300 text-4xl mb-4"></i>
                         <h3 class="text-lg font-semibold mb-2 text-gray-900">人手不足</h3>
@@ -669,9 +672,9 @@
         </section>
 
         <!-- CTA Section -->
-        <section class="swipe-section bg-gradient-to-r from-blue-400 to-purple-400 text-white">
-            <div class="container mx-auto px-4 text-center">
-                <div class="max-w-3xl mx-auto">
+        <section class="swipe-section bg-gradient-to-r from-blue-400 to-purple-400 text-white py-16">
+            <div class="container mx-auto px-4 max-w-3xl">
+                <div class="text-center">
                     <h2 class="text-4xl md:text-5xl font-bold mb-6">
                         もう一人で悩まないでください
                     </h2>
