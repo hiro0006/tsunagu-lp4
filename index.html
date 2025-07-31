@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSUNAGU - 社長の「こうしたい」を「現実」にする戦略パートナー</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            overflow-x: hidden; /* 全体の横スクロールを防ぐ */
+        }
+        /* ヒーローセクションとメインCTAセクションの背景グラデーションをより艶やかで爽やかに */
+        .gradient-bg {
+            /* 背景色を紺色のグラデーションに変更 */
+            background: linear-gradient(135deg, #191970 0%, #000080 100%); /* ミッドナイトブルーからネイビーへ */
+            position: relative;
+            overflow: hidden;
+        }
+        /* 背景に動きのあるパターンを追加 */
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><circle cx="25" cy="25" r="15" fill="%23fff"/><circle cx="75" cy="75" r="15" fill="%23fff"/></svg>') repeat;
+            background-size: 200px;
+            animation: moveBackground 30s linear infinite;
+        }
+        @keyframes moveBackground {
+            from { background-position: 0 0; }
+            to { background-position: 200px 200px; }
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* より繊細なシャドウ */
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* ホバー時のシャドウを強化 */
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .typing-animation {
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end);
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* 各セクションの背景色を微調整し、より明るくクリーンな印象に */
+        .bg-gray-50 {
+            background-color: #F8F9FA; /* ほぼ白に近いライトグレー */
+        }
+        .bg-white {
+            background-color: #FFFFFF; /* 純粋な白 */
+        }
+        /* カードのボーダー色を少し明るく */
+        .border-red-400 { border-color: #EF4444; }
+        .border-orange-400 { border-color: #F97316; }
+        .border-yellow-400 { border-color: #F59E0B; }
+        .border-blue-400 { border-color: #60A5FA; }
+        .border-purple-400 { border-color: #A78BFA; }
+        .border-green-400 { border-color: #34D399; }
+
+        /* アイコンの色を統一感のあるトーンに調整 */
+        .text-red-500 { color: #EF4444; }
+        .text-orange-500 { color: #F97316; }
+        .text-yellow-500 { color: #F59E0B; }
+        .text-blue-500 { color: #3B82F6; } /* より鮮やかな青 */
+        .text-purple-500 { color: #8B5CF6; } /* より鮮やかな紫 */
+        .text-green-500 { color: #10B981; } /* より鮮やかな緑 */
+        .text-indigo-600 { color: #4F46E5; } /* 濃いめのインディゴ */
+        .text-yellow-300 { color: #FCD34D; } /* ヒーローセクションの強調色 */
+
+        /* ボタンのスタイル調整 */
+        .bg-indigo-600 { background-color: #4F46E5; }
+        .hover\:bg-indigo-700:hover { background-color: #4338CA; }
+        .bg-yellow-400 { background-color: #FCD34D; }
+        .hover\:bg-yellow-300:hover { background-color: #FCD34D; } /* ホバー時も同じ色で、シャドウで変化を強調 */
+        .border-white { border-color: #FFFFFF; }
+        .hover\:bg-white:hover { background-color: #FFFFFF; }
+        .hover\:text-gray-900:hover { color: #1F2937; }
+
+        /* CTAセクションの背景グラデーションを調整 */
+        .bg-gradient-to-r.from-blue-400.to-purple-400 {
+            background: linear-gradient(to right, #60A5FA 0%, #A78BFA 100%); /* より柔らかい青から紫へ */
+        }
+
+        /* 社長ロゴのスタイル */
+        .company-logo {
+            position: absolute;
+            top: 50%; /* 中央に配置 */
+            right: 5%; /* 右からの位置 */
+            transform: translateY(-50%); /* 垂直方向の中央揃え */
+            width: 300px; /* ロゴの幅を調整 */
+            height: auto;
+            z-index: 20; /* ヒーローコンテンツよりも前面に表示 */
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)); /* ロゴに影を追加 */
+            opacity: 0.8; /* ロゴの透明度を調整 */
+        }
+
+        /* レスポンシブ調整 */
+        @media (max-width: 1024px) { /* デスクトップとタブレットの中間 */
+            .company-logo {
+                width: 250px;
+                right: 3%;
+            }
+        }
+        @media (max-width: 768px) { /* タブレットとモバイルの中間 */
+            .company-logo {
+                width: 180px; /* モバイルでのロゴサイズを調整 */
+                top: 2rem; /* 上部に移動 */
+                right: 1rem;
+                transform: translateY(0); /* 垂直方向の中央揃えを解除 */
+            }
+            .hero-content-wrapper {
+                padding-top: 6rem; /* ロゴとの重なりを避けるため、上部にパディングを追加 */
+            }
+            .hero-section h1 {
+                font-size: 3.5rem; /* モバイルでのH1フォントサイズ調整 */
+            }
+            .hero-section p {
+                font-size: 1.25rem; /* モバイルでのPフォントサイズ調整 */
+            }
+        }
+        @media (max-width: 640px) { /* スマホ向け */
+            .company-logo {
+                width: 120px;
+                top: 1rem;
+                right: 1rem;
+            }
+            .hero-content-wrapper {
+                padding-top: 4rem;
+            }
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section p {
+                font-size: 1rem;
+            }
+        }
+
+        /* 運送会社A社の背景画像スタイル */
+        .case-study-a-bg {
+            background-image: url('https://github.com/hiro0006/tsu-logo/blob/main/%E5%90%8D%E7%A7%B0%E6%9C%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%20(1).jpg?raw=true');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden; /* ぼかしがはみ出さないように */
+        }
+
+        .case-study-a-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7); /* 半透明の白いオーバーレイ */
+            filter: blur(3px); /* ぼかし効果 */
+            z-index: 0; /* 背景として */
+        }
+
+        /* 運送会社B社の背景画像スタイル */
+        .case-study-b-bg {
+            background-image: url('https://github.com/hiro0006/tsu-logo/blob/main/%E5%90%8D%E7%A7%B0%E6%9C%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%20(2).jpg?raw=true');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden; /* ぼかしがはみ出さないように */
+        }
+
+        .case-study-b-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7); /* 半透明の白いオーバーレイ */
+            filter: blur(3px); /* ぼかし効果 */
+            z-index: 0; /* 背景として */
+        }
+
+        /* カット野菜メーカーC社の背景画像スタイル */
+        .case-study-c-bg {
+            background-image: url('https://github.com/hiro0006/tsu-logo/blob/main/%E5%90%8D%E7%A7%B0%E6%9C%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%20(3).jpg?raw=true');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden; /* ぼかしがはみ出さないように */
+        }
+
+        .case-study-c-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7); /* 半透明の白いオーバーレイ */
+            filter: blur(3px); /* ぼかし効果 */
+            z-index: 0; /* 背景として */
+        }
+
+        .case-study-a-bg > *, .case-study-b-bg > *, .case-study-c-bg > * {
+            position: relative;
+            z-index: 1; /* コンテンツを前面に */
+        }
+
+        /* スワイプコンテナのスタイル */
+        .swipe-container {
+            display: flex; /* セクションを横に並べる */
+            overflow-x: scroll; /* 横スクロールを許可 */
+            scroll-snap-type: x mandatory; /* スクロールスナップを有効化 */
+            -webkit-overflow-scrolling: touch; /* iOSでのスムーズなスクロール */
+            scroll-behavior: smooth; /* プログラムによるスクロールをスムーズに */
+            height: calc(100vh - 64px); /* ヘッダーの高さを引いたビューポートの高さ */
+            position: relative;
+            z-index: 10; /* ヘッダーの下に配置 */
+        }
+
+        /* 各セクションのスタイル */
+        .swipe-section {
+            flex-shrink: 0; /* セクションが縮まないようにする */
+            width: 100vw; /* ビューポートの幅いっぱいに表示 */
+            scroll-snap-align: start; /* セクションの開始位置でスナップ */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem; /* 各セクションのパディング */
+            box-sizing: border-box; /* パディングを幅に含める */
+            position: relative;
+            overflow-y: auto; /* セクション内のコンテンツが長い場合は縦スクロールを許可 */
+        }
+
+        /* デスクトップでは横スクロールバーを非表示にするが、機能は維持 */
+        @media (min-width: 768px) {
+            .swipe-container::-webkit-scrollbar {
+                display: none;
+            }
+            .swipe-container {
+                -ms-overflow-style: none; /* IE and Edge */
+                scrollbar-width: none; /* Firefox */
+            }
+        }
+
+        /* ナビゲーションボタンのスタイル */
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            z-index: 30; /* コンテンツより前面に */
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            display: none; /* デフォルトで非表示 */
+        }
+        .nav-button:hover {
+            opacity: 1;
+        }
+        .nav-button.left {
+            left: 1rem;
+            border-radius: 0 50% 50% 0;
+        }
+        .nav-button.right {
+            right: 1rem;
+            border-radius: 50% 0 0 50%;
+        }
+        .nav-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* デスクトップでボタンを表示 */
+        @media (min-width: 768px) {
+            .nav-button {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b-2 border-opacity-20 border-gray-200">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-indigo-600">TSUNAGU</div>
+            <button class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition duration-300 shadow-md">
+                <i class="fas fa-phone mr-2"></i>無料相談はこちら
+            </button>
+        </div>
+    </header>
+
+    <!-- Swipeable Container for Main Content -->
+    <div class="swipe-container" id="swipeContainer">
+        <!-- Navigation Buttons for PC -->
+        <button class="nav-button left" id="prevSectionBtn">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="nav-button right" id="nextSectionBtn">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Hero Section -->
+        <section class="swipe-section gradient-bg text-white">
+            <!-- 社長ロゴの挿入 -->
+            <img src="https://raw.githubusercontent.com/hiro0006/tsu-logo/0f9304bb52705376d8fcd8cbaaf461582b7ce655/IMG_9677.png" alt="TSUNAGUロゴ" class="company-logo">
+
+            <div class="container mx-auto px-4 relative z-10 hero-content-wrapper text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                        社長の「こうしたい」を<br>
+                        確かな情報と数字で<br>
+                        <span class="text-yellow-300">「現実」</span>にする
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 opacity-90">
+                        物足りないNo.2に悩む社長へ。あなたのビジョンを加速させる、<br>
+                        頼れる「情報参謀」がここにいます
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-full text-lg font-semibold hover:bg-yellow-300 transition duration-300 pulse-animation shadow-xl">
+                            <i class="fas fa-calendar-alt mr-2"></i>今すぐ無料相談を予約
+                        </button>
+                        <button class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition duration-300 shadow-md">
+                            <i class="fas fa-play mr-2"></i>サービス詳細を見る
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section class="swipe-section bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                        こんな状況に<span class="text-red-500">心当たり</span>ありませんか？
+                    </h2>
+                    <p class="text-xl text-gray-600">行動力ある社長が直面する、No.2と情報の課題</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-400 card-hover">
+                        <i class="fas fa-exclamation-triangle text-red-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">No.2からの情報が物足りない</h3>
+                        <p class="text-gray-600">重要な判断を任せたいが、必要な情報が不足している。現状把握に時間がかかる。</p>
+                    </div>
+                    
+                    <div class="bg-orange-50 p-6 rounded-lg border-l-4 border-orange-400 card-hover">
+                        <i class="fas fa-user-tie text-orange-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">社内で本音を語れる相手がいない</h3>
+                        <p class="text-gray-600">立場上、部下には弱みを見せられない。孤独な経営判断を強いられる。</p>
+                    </div>
+                    
+                    <div class="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-400 card-hover">
+                        <i class="fas fa-clock text-yellow-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">プレイングマネージャーとして多忙</h3>
+                        <p class="text-gray-600">日々の業務に追われ、戦略立案や数字の分析に時間を割けない。</p>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400 card-hover">
+                        <i class="fas fa-puzzle-piece text-blue-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">No.2が情報の関連性を見抜けない</h3>
+                        <p class="text-gray-600">個々の情報は集まるが、No.2がそれらを繋ぎ合わせ、本質を見抜く力が弱い。</p>
+                    </div>
+                    
+                    <div class="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-400 card-hover">
+                        <i class="fas fa-question-circle text-purple-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">No.2の「どうしましょう？」に疲弊</h3>
+                        <p class="text-gray-600">複雑な課題に直面するたび、No.2が解決の糸口を見つけられず、あなたが答えを出すことに。</p>
+                    </div>
+                    
+                    <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-400 card-hover">
+                        <i class="fas fa-balance-scale text-green-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">激変する社会情勢への不安</h3>
+                        <p class="text-gray-600">経済変動、人手不足、DXなど、No.2任せでは不安。先を見据えた戦略が必要です。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section for TSUNAGU Value -->
+        <section class="swipe-section bg-white">
+            <div class="container mx-auto px-4">
+                <div class="grid md:grid-cols-1 gap-8 items-center max-w-6xl mx-auto text-center">
+                    <div class="text-center">
+                        <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                            TSUNAGUの<span class="text-indigo-600">価値</span>
+                        </h2>
+                        <p class="text-xl text-gray-600 mb-6">
+                            私たちは、社長のビジョンを実現するための<br>
+                            強力なパートナーです。
+                        </p>
+                        <p class="text-lg text-gray-700">
+                            確かな情報分析と実践的な戦略で、<br>
+                            あなたのビジネスを次のステージへと導きます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Section -->
+        <section class="swipe-section bg-gray-100">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                        TSUNAGUが提供する<br>
+                        <span class="text-indigo-600">「情報の掛け算思考」</span>
+                    </h2>
+                    <p class="text-xl text-gray-600">社長の「こうしたい」を確信に変える戦略パートナーシップ</p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="p-8">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                                    <i class="fas fa-lightbulb text-yellow-500 mr-3"></i>
+                                    情報を掛け算する思考法
+                                </h3>
+                                <p class="text-gray-600 mb-6">
+                                    単独の情報では見えない解決策を、複数の情報を組み合わせることで導き出します。
+                                    業界知識×市場動向×社内リソース×外部環境を総合的に分析し、最適解を見つけます。
+                                </p>
+                                <ul class="space-y-3">
+                                    <li class="flex items-center text-gray-700">
+                                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                        多角的な情報収集・分析
+                                    </li>
+                                    <li class="flex items-center text-gray-700">
+                                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                        業界動向と社内状況の掛け合わせ
+                                    </li>
+                                    <li class="flex items-center text-gray-700">
+                                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                                        リスクとチャンスの同時評価
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="text-center">
+                                <div class="bg-indigo-100 rounded-full w-40 h-40 flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-calculator text-indigo-600 text-6xl"></i>
+                                </div>
+                                <p class="text-sm text-gray-500">情報A × 情報B × 情報C = 最適解</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="swipe-section bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                        なぜTSUNAGUが選ばれるのか？
+                    </h2>
+                    <p class="text-xl text-gray-600">社長の「こうしたい」を理解し、実現を支える専門的サポート</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="text-center p-8 bg-blue-50 rounded-2xl card-hover">
+                        <div class="bg-blue-500 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-handshake text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">社長の本音に寄り添う関係性</h3>
+                        <p class="text-gray-600">
+                            社内政治や気兼ねなく、率直に相談できる外部パートナー。
+                            守秘義務を徹底し、安心して本音で未来を語り合えます。
+                        </p>
+                    </div>
+                    
+                    <div class="text-center p-8 bg-green-50 rounded-2xl card-hover">
+                        <div class="bg-green-500 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-brain text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">社長の直感を「確信」に変える戦略力</h3>
+                        <p class="text-gray-600">
+                            20年以上の経験に裏打ちされた戦略的思考で、複雑な課題を整理。
+                            数字と情報を掛け算し、見落としがちな解決策を発見します。
+                        </p>
+                    </div>
+                    
+                    <div class="text-center p-8 bg-purple-50 rounded-2xl card-hover">
+                        <div class="bg-purple-500 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-chart-line text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">「こうしたい」を「こうなった！」へ導く実績</h3>
+                        <p class="text-gray-600">
+                            数多くの企業の成長を支援してきた実績をもとに、
+                            実現可能で効果の高い戦略を提案し、社長の描く未来を確実に実現します。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Studies Section -->
+        <section class="swipe-section bg-gray-100">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                        成功事例
+                    </h2>
+                    <p class="text-xl text-gray-600">情報の掛け算思考で実現した劇的な成果</p>
+                </div>
+                
+                <div class="space-y-8 max-w-5xl mx-auto">
+                    <!-- Case Study 1 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover case-study-a-bg">
+                        <div class="p-8">
+                            <div class="flex items-start mb-6">
+                                <div class="bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <span class="font-bold">A</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-800 mb-2">運送会社A社</h3>
+                                    <p class="text-gray-600">専任営業不在で売上停滞の課題を解決</p>
+                                </div>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-3 gap-6">
+                                <div class="bg-red-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-red-700 mb-2">課題</h4>
+                                    <p class="text-sm text-gray-600">売上7,000万円で停滞、新規獲得に限界</p>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-blue-700 mb-2">アプローチ</h4>
+                                    <p class="text-sm text-gray-600">営業部門として完全機能、戦略的な市場開拓</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-green-700 mb-2">成果</h4>
+                                    <p class="text-sm text-gray-600"><strong>7年間で6億円達成</strong><br>約8.5倍の成長</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Case Study 2 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover case-study-b-bg">
+                        <div class="p-8">
+                            <div class="flex items-start mb-6">
+                                <div class="bg-green-500 text-white rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <span class="font-bold">B</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-800 mb-2">運送会社B社</h3>
+                                    <p class="text-gray-600">慢性的赤字からの脱却と事業再生</p>
+                                </div>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-3 gap-6">
+                                <div class="bg-red-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-red-700 mb-2">課題</h4>
+                                    <p class="text-sm text-gray-600">慢性的な赤字経営、先行き不安</p>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-blue-700 mb-2">アプローチ</h4>
+                                    <p class="text-sm text-gray-600">特殊ニーズに特化した新規案件獲得</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-green-700 mb-2">成果</h4>
+                                    <p class="text-sm text-gray-600"><strong>4年間で黒字化達成</strong><br>新規案件3社獲得</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Case Study 3 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover case-study-c-bg">
+                        <div class="p-8">
+                            <div class="flex items-start mb-6">
+                                <div class="bg-purple-500 text-white rounded-full w-12 h-12 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <span class="font-bold">C</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-800 mb-2">カット野菜メーカーC社</h3>
+                                    <p class="text-gray-600">コスト最適化と業界トップクラスへの成長</p>
+                                </div>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-3 gap-6">
+                                <div class="bg-red-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-red-700 mb-2">課題</h4>
+                                    <p class="text-sm text-gray-600">新規顧客獲得の伸び悩み、コスト非効率</p>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-blue-700 mb-2">アプローチ</h4>
+                                    <p class="text-sm text-gray-600">獲得率向上、仕入・配送コスト最適化</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-green-700 mb-2">成果</h4>
+                                    <p class="text-sm text-gray-600"><strong>業界トップクラス達成</strong><br>月間130万円コスト削減</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Issues Section -->
+        <section class="swipe-section bg-indigo-900 text-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold mb-4">
+                        今、企業が直面する<br>
+                        <span class="text-yellow-300">社会的課題</span>
+                    </h2>
+                    <p class="text-xl opacity-90">これらの問題に、一人で立ち向かっていませんか？</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                    <div class="bg-white bg-opacity-10 p-6 rounded-lg text-center">
+                        <i class="fas fa-users text-yellow-300 text-4xl mb-4"></i>
+                        <h3 class="text-lg font-semibold mb-2 text-gray-900">人手不足</h3>
+                        <p class="text-sm text-gray-900">労働力確保の困難と生産性向上の両立</p>
+                    </div>
+                    <div class="bg-white bg-opacity-10 p-6 rounded-lg text-center">
+                        <i class="fas fa-robot text-yellow-300 text-4xl mb-4"></i>
+                        <h3 class="text-lg font-semibold mb-2 text-gray-900">DX推進</h3>
+                        <p class="text-sm text-gray-900">デジタル化の遅れと競争力低下の危機</p>
+                    </div>
+                    <div class="bg-white bg-opacity-10 p-6 rounded-lg text-center">
+                        <i class="fas fa-chart-line text-yellow-300 text-4xl mb-4"></i>
+                        <h3 class="text-lg font-semibold mb-2 text-gray-900">経済変動</h3>
+                        <p class="text-sm text-gray-900">原材料高騰とインフレ圧力への対応</p>
+                    </div>
+                    <div class="bg-white bg-opacity-10 p-6 rounded-lg text-center">
+                        <i class="fas fa-leaf text-yellow-300 text-4xl mb-4"></i>
+                        <h3 class="text-lg font-semibold mb-2 text-gray-900">持続可能性</h3>
+                        <p class="text-sm text-gray-900">ESG経営と収益性の両立</p>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <p class="text-xl mb-6">
+                        これらの複雑な課題に対して、<br>
+                        <strong class="text-yellow-300">情報を掛け算して考える</strong>戦略パートナーが必要です
+                    </p>
+                    <button class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-full text-lg font-semibold hover:bg-yellow-300 transition duration-300 shadow-md">
+                        <i class="fas fa-comments mr-2"></i>今すぐ相談する
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="swipe-section bg-gradient-to-r from-blue-400 to-purple-400 text-white">
+            <div class="container mx-auto px-4 text-center">
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                        もう一人で悩まないでください
+                    </h2>
+                    <p class="text-xl mb-8 opacity-90">
+                        社長の「こうしたい」を、確かな力で実現しませんか？
+                    </p>
+                    
+                    <div class="bg-white bg-opacity-10 rounded-2xl p-6 mb-8 flex flex-col md:flex-row items-center justify-between">
+                        <div class="md:w-1/2 md:pr-4 mb-4 md:mb-0 text-left">
+                            <h3 class="text-2xl font-bold mb-4">
+                                <i class="fas fa-gift text-yellow-300 mr-3"></i>
+                                初回相談無料
+                            </h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center text-gray-900 text-xl font-medium">
+                                    <i class="fas fa-check text-green-400 mr-3 text-2xl"></i>
+                                    60分の戦略相談
+                                </li>
+                                <li class="flex items-center text-gray-900 text-xl font-medium">
+                                    <i class="fas fa-check text-green-400 mr-3 text-2xl"></i>
+                                    現状課題の整理
+                                </li>
+                                <li class="flex items-center text-gray-900 text-xl font-medium">
+                                    <i class="fas fa-check text-green-400 mr-3 text-2xl"></i>
+                                    解決方向性の提示
+                                </li>
+                                <li class="flex items-center text-gray-900 text-xl font-medium">
+                                    <i class="fas fa-check text-green-400 mr-3 text-2xl"></i>
+                                    完全守秘義務
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="md:w-1/2 flex justify-center items-center flex-grow">
+                            <img src="https://github.com/hiro0006/tsu-logo/blob/main/%E5%90%8D%E7%A7%B0%E6%9C%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%20(5).jpg?raw=true" 
+                                 alt="無料相談のイメージ" 
+                                 class="w-full h-auto rounded-lg shadow-md"> 
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="https://line.me/R/ti/p/%40889oonvz" target="_blank" rel="noopener noreferrer" class="bg-green-500 text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-green-600 transition duration-300 shadow-xl flex items-center justify-center">
+                            <i class="fab fa-line mr-3"></i>LINEで無料相談
+                        </a>
+                        <button class="bg-blue-500 text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-blue-600 transition duration-300 shadow-xl flex items-center justify-center" onclick="window.location.href='mailto:tsunagu01@tsunagu0001.com'">
+                            <i class="fas fa-envelope mr-3"></i>メールで無料相談
+                        </button>
+                    </div>
+                    
+                    <p class="text-sm opacity-75 mt-6">
+                        ※ 相談内容は完全に秘匿され、第三者に開示されることはありません
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div> <!-- End of swipe-container -->
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">TSUNAGU</h3>
+                    <p class="text-gray-300 mb-4">
+                        社長の「こうしたい」を「現実」にする戦略パートナー<br>
+                        情報の掛け算思考で最適解を導き出します
+                    </p>
+                    <div class="flex space-x-4">
+                        <i class="fab fa-twitter text-2xl hover:text-blue-400 cursor-pointer"></i>
+                        <i class="fab fa-facebook text-2xl hover:text-blue-600 cursor-pointer"></i>
+                        <i class="fab fa-linkedin text-2xl hover:text-blue-500 cursor-pointer"></i>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">サービス</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">戦略コンサルティング</a></li>
+                        <li><a href="#" class="hover:text-white">情報分析・調査</a></li>
+                        <li><a href="#" class="hover:text-white">営業支援</a></li>
+                        <li><a href="#" class="hover:text-white">事業開発支援</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">お問い合わせ</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p><i class="fas fa-phone mr-2"></i>0776-97-9742</p>
+                        <p><i class="fas fa-envelope mr-2"></i>tsunagu01@tsunagu0001.com</p>
+                        <p><i class="fas fa-clock mr-2"></i>平日 9:00-18:00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 TSUNAGU. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links (if any were added)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation on scroll for card elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px' // Adjust to trigger animation slightly earlier
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    // Stop observing once animated to prevent re-triggering
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all card elements for fade-in and slide-up animation
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // CTA button click handlers - using a custom modal instead of alert()
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Check if the button is not one of the CTA buttons with external links
+                if (!this.closest('a') && (this.textContent.includes('相談') || this.textContent.includes('予約') || this.textContent.includes('見る'))) {
+                    // Create a simple modal for demonstration instead of alert()
+                    const modal = document.createElement('div');
+                    modal.className = 'fixed inset-0 bg-gray-600 bg-opacity-75 flex items-center justify-center z-50';
+                    modal.innerHTML = `
+                        <div class="bg-white p-8 rounded-lg shadow-xl max-w-sm mx-auto text-center">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">お問い合わせ</h3>
+                            <p class="text-gray-700 mb-6">お問い合わせフォームに移動します。実際の実装では、予約システムやお問い合わせフォームに連携します。</p>
+                            <button id="closeModal" class="bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 transition duration-300">閉じる</button>
+                        </div>
+                    `;
+                    document.body.appendChild(modal);
+
+                    document.getElementById('closeModal').addEventListener('click', () => {
+                        document.body.removeChild(modal);
+                    });
+                }
+            });
+        });
+
+        // Swipe navigation for PC and Auto-swipe functionality
+        const swipeContainer = document.getElementById('swipeContainer');
+        const prevSectionBtn = document.getElementById('prevSectionBtn');
+        const nextSectionBtn = document.getElementById('nextSectionBtn');
+        const sections = document.querySelectorAll('.swipe-section');
+        let currentSectionIndex = 0;
+        let autoSwipeInterval;
+        let userInteractionTimeout;
+        const AUTO_SWIPE_DELAY = 30000; // 30 seconds
+        const USER_IDLE_DELAY = 5000; // 5 seconds of idle time before resuming auto-swipe
+
+        // Function to update the state of navigation buttons (enabled/disabled)
+        function updateNavButtons() {
+            prevSectionBtn.disabled = currentSectionIndex === 0;
+            nextSectionBtn.disabled = currentSectionIndex === sections.length - 1;
+        }
+
+        // Function to scroll to a specific section
+        function scrollToSection(index) {
+            if (index >= 0 && index < sections.length) {
+                const targetScrollLeft = sections[index].offsetLeft;
+                swipeContainer.scrollTo({
+                    left: targetScrollLeft,
+                    behavior: 'smooth'
+                });
+                currentSectionIndex = index;
+                updateNavButtons(); // Update button state after scrolling
+            }
+        }
+
+        // Function to start the automatic swipe
+        function startAutoSwipe() {
+            stopAutoSwipe(); // Clear any existing interval
+            autoSwipeInterval = setInterval(() => {
+                let nextIndex = currentSectionIndex + 1;
+                if (nextIndex >= sections.length) {
+                    nextIndex = 0; // Loop back to the first section
+                }
+                scrollToSection(nextIndex);
+            }, AUTO_SWIPE_DELAY);
+        }
+
+        // Function to stop the automatic swipe
+        function stopAutoSwipe() {
+            if (autoSwipeInterval) {
+                clearInterval(autoSwipeInterval);
+                autoSwipeInterval = null;
+            }
+        }
+
+        // Function to reset the auto-swipe timer after user interaction
+        function resetAutoSwipeTimer() {
+            stopAutoSwipe(); // Stop current auto-swipe
+            clearTimeout(userInteractionTimeout); // Clear any pending restart
+            userInteractionTimeout = setTimeout(startAutoSwipe, USER_IDLE_DELAY); // Schedule restart
+        }
+
+        // Event listeners for navigation buttons
+        if (prevSectionBtn) {
+            prevSectionBtn.addEventListener('click', () => {
+                scrollToSection(currentSectionIndex - 1);
+                resetAutoSwipeTimer(); // Reset timer on user interaction
+            });
+        }
+
+        if (nextSectionBtn) {
+            nextSectionBtn.addEventListener('click', () => {
+                scrollToSection(currentSectionIndex + 1);
+                resetAutoSwipeTimer(); // Reset timer on user interaction
+            });
+        }
+
+        // Update currentSectionIndex on scroll (for mouse wheel/trackpad/touch swipe)
+        // This debounces the scroll event to prevent excessive updates
+        let scrollTimeout;
+        swipeContainer.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                let closestSectionIndex = 0;
+                let minDistance = Infinity;
+                const containerRect = swipeContainer.getBoundingClientRect();
+
+                sections.forEach((section, index) => {
+                    const rect = section.getBoundingClientRect();
+                    // Calculate distance from the left edge of the swipeContainer's visible area
+                    const distance = Math.abs(rect.left - containerRect.left); 
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        closestSectionIndex = index;
+                    }
+                });
+                currentSectionIndex = closestSectionIndex;
+                updateNavButtons(); // Update button state after scroll settles
+                resetAutoSwipeTimer(); // Reset timer on user scroll
+            }, 100); // Adjust debounce time as needed
+        });
+
+        // Event listeners for user interaction to reset the auto-swipe timer
+        swipeContainer.addEventListener('touchstart', resetAutoSwipeTimer);
+        swipeContainer.addEventListener('touchend', resetAutoSwipeTimer);
+        swipeContainer.addEventListener('mousedown', resetAutoSwipeTimer);
+        swipeContainer.addEventListener('mouseup', resetAutoSwipeTimer);
+        swipeContainer.addEventListener('wheel', resetAutoSwipeTimer);
+        
+        // Initialize button states and start auto-swipe on page load
+        window.addEventListener('load', () => {
+            updateNavButtons();
+            startAutoSwipe(); // Start auto-swiping when the page loads
+        });
+    </script>
+</body>
+</html>
