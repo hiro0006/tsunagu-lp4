@@ -264,7 +264,7 @@
 
         /* ナビゲーションボタンのスタイル */
         .nav-button {
-            position: absolute;
+            position: fixed; /* Changed from absolute to fixed */
             top: 50%;
             transform: translateY(-50%);
             background-color: rgba(0, 0, 0, 0.5);
@@ -312,16 +312,16 @@
         </div>
     </header>
 
+    <!-- Navigation Buttons for PC (Fixed position) -->
+    <button class="nav-button left" id="prevSectionBtn">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="nav-button right" id="nextSectionBtn">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+
     <!-- Swipeable Container for Main Content -->
     <div class="swipe-container" id="swipeContainer">
-        <!-- Navigation Buttons for PC -->
-        <button class="nav-button left" id="prevSectionBtn">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="nav-button right" id="nextSectionBtn">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-
         <!-- Hero Section -->
         <section class="swipe-section gradient-bg text-white">
             <!-- 社長ロゴの挿入 -->
@@ -839,7 +839,7 @@
         let currentSectionIndex = 0;
         let autoSwipeInterval;
         let userInteractionTimeout;
-        const AUTO_SWIPE_DELAY = 30000; // 30 seconds
+        const AUTO_SWIPE_DELAY = 10000; // 10 seconds (changed from 30 seconds)
         const USER_IDLE_DELAY = 5000; // 5 seconds of idle time before resuming auto-swipe
 
         // Function to update the state of navigation buttons (enabled/disabled)
