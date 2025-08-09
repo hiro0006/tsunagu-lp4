@@ -241,6 +241,13 @@
                 padding-top: 0.6rem;
                 padding-bottom: 0.6rem;
             }
+
+            /* CTAセクションのボタン調整 */
+            .cta-section-buttons .flex-col > * {
+                max-width: 280px; /* CTAボタンの最大幅を調整して横幅に収める */
+                font-size: 0.95rem; /* CTAボタンのフォントサイズを調整 */
+                padding: 0.8rem 1.5rem; /* CTAボタンのパディングを調整 */
+            }
         }
         /* Add an even smaller breakpoint for very narrow screens if necessary */
         @media (max-width: 480px) {
@@ -271,6 +278,13 @@
                 padding-top: 0.5rem;
                 padding-bottom: 0.5rem;
             }
+
+            /* CTAセクションのボタン調整 */
+            .cta-section-buttons .flex-col > * {
+                max-width: 250px; /* CTAボタンの最大幅をさらに調整 */
+                font-size: 0.9rem; /* CTAボタンのフォントサイズをさらに調整 */
+                padding: 0.7rem 1.2rem; /* CTAボタンのパディングをさらに調整 */
+            }
         }
         /* Specific adjustment for iPhone SE / very narrow screens */
         @media (max-width: 375px) {
@@ -287,6 +301,13 @@
                 padding-right: 0.8rem;
                 padding-top: 0.4rem;
                 padding-bottom: 0.4rem;
+            }
+
+            /* CTAセクションのボタン調整 */
+            .cta-section-buttons .flex-col > * {
+                max-width: 200px; /* iPhone SE向けにCTAボタンの最大幅を調整 */
+                font-size: 0.8rem; /* iPhone SE向けにCTAボタンのフォントサイズを調整 */
+                padding: 0.6rem 1rem; /* iPhone SE向けにCTAボタンのパディングを調整 */
             }
         }
 
@@ -965,7 +986,7 @@
                         </div>
                     </div>
                     
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center cta-section-buttons">
                         <a href="https://line.me/R/ti/p/%40889oonvz" target="_blank" rel="noopener noreferrer" class="bg-green-500 text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-green-600 transition duration-300 shadow-xl flex items-center justify-center cta-pulse-animation">
                             <i class="fab fa-line mr-3"></i>LINEで無料相談
                         </a>
