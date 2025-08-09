@@ -243,10 +243,16 @@
             }
 
             /* CTAセクションのボタン調整 */
-            .cta-section-buttons .flex-col > * {
+            .cta-section-buttons {
+                flex-direction: column; /* ボタンを縦に積む */
+                align-items: center; /* ボタンを中央寄せ */
+                width: 100%; /* 親要素の幅いっぱいに */
+            }
+            .cta-section-buttons > * {
                 max-width: 280px; /* CTAボタンの最大幅を調整して横幅に収める */
                 font-size: 0.95rem; /* CTAボタンのフォントサイズを調整 */
                 padding: 0.8rem 1.5rem; /* CTAボタンのパディングを調整 */
+                width: 100%; /* スマホでボタンを横いっぱいに広げる */
             }
         }
         /* Add an even smaller breakpoint for very narrow screens if necessary */
@@ -280,7 +286,7 @@
             }
 
             /* CTAセクションのボタン調整 */
-            .cta-section-buttons .flex-col > * {
+            .cta-section-buttons > * {
                 max-width: 250px; /* CTAボタンの最大幅をさらに調整 */
                 font-size: 0.9rem; /* CTAボタンのフォントサイズをさらに調整 */
                 padding: 0.7rem 1.2rem; /* CTAボタンのパディングをさらに調整 */
@@ -304,7 +310,7 @@
             }
 
             /* CTAセクションのボタン調整 */
-            .cta-section-buttons .flex-col > * {
+            .cta-section-buttons > * {
                 max-width: 200px; /* iPhone SE向けにCTAボタンの最大幅を調整 */
                 font-size: 0.8rem; /* iPhone SE向けにCTAボタンのフォントサイズを調整 */
                 padding: 0.6rem 1rem; /* iPhone SE向けにCTAボタンのパディングを調整 */
